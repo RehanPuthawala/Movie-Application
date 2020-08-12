@@ -1,0 +1,331 @@
+$color-primary: #e43f5a;
+$color-bg: #1b1b2f;
+$color-light-blue: #1f4068;
+$color-dark-blue: #162447;
+
+$font-primary: "Poppins", sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 1.45;
+  color: $color-primary;
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  grid-template-columns: [page-start col-1-start] 23rem [col-1-end col-2-start] 1fr [col-2-end page-end];
+}
+
+// *------------------ Header -----------------------------* //
+
+.header {
+  max-height: 6rem;
+  grid-row: 1 / 2;
+  grid-column: 2 / -1;
+  background-color: $color-primary;
+  display: flex;
+
+  &__search-box {
+    flex: 1;
+    // background-color: $color-bg;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  &__search-input {
+    width: 100%;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 0.7rem;
+    transition: all 0.3s;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+
+    &::placeholder {
+      color: currentColor;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &__search-icon {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-right: 1rem;
+  }
+
+  &__user-box {
+    flex: 0 0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: darken($color: $color-primary, $amount: 5%);
+    cursor: pointer;
+  }
+
+  &__username {
+    color: #fff;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  &__user-img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+// *------------------ Sidebar -----------------------------* //
+
+.sidebar {
+  grid-row: 1 / 3;
+  grid-column: col-1-start / col-1-end;
+  background-color: $color-bg;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__logo-box {
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darken($color: $color-primary, $amount: 5%);
+    margin-bottom: 6rem;
+  }
+
+  &__logo {
+    font-size: 2rem;
+    color: #ffff;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+// *------------------ Dashboard -----------------------------* //
+
+.dashboard {
+  padding: 4rem;
+  grid-column: col-2-start / page-end;
+  background-color: $color-dark-blue;
+
+  &__movies {
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 2rem;
+  }
+
+  &__movie {
+    width: 100%;
+    display: grid;
+    position: relative;
+  }
+
+  &__img-box {
+    width: 100%;
+    height: 40rem;
+    overflow: hidden;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba($color-primary, 0.8);
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img-box:hover &__overlay {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__favourite,
+  &__watch-later {
+    text-decoration: none;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    visibility: hidden;
+    pointer-events: none;
+    margin-right: 1rem;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-dark-blue;
+    }
+
+    &:hover .dashboard__icon {
+      color: #fff;
+    }
+  }
+
+  &__overlay:hover &__favourite {
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  &__overlay:hover &__watch-later {
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    color: $color-primary;
+  }
+
+  &__rating {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: $color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 600;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+// *------------------ Components -----------------------------* //
+
+.navigation {
+  margin-bottom: auto;
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    text-align: center;
+    padding: 1rem;
+    transition: all 2s;
+    margin-bottom: 2rem;
+    color: #fff;
+    background: linear-gradient(
+      -90deg,
+      $color-primary 33%,
+      $color-dark-blue 33%,
+      $color-bg 66%,
+      transparent 66%
+    );
+    background-size: 220rem 220rem;
+
+    &:hover {
+      // background-color: $color-primary;
+      color: #fff;
+      background-position: -50%;
+    }
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: inherit;
+  }
+}
+
+// *------------------ Typography -----------------------------* //
+
+.heading-1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+  text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.heading-2 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.category {
+  font-size: 1.6rem;
+}
+
+.copyright {
+  color: #fff;
+  font-size: 1;
+}
+
+// *------------------ Utilities Classes -----------------------------* //
+
+.u-margin-bt-very-small {
+  margin-bottom: 0.5rem;
+}
+.u-margin-bt-small {
+  margin-bottom: 2rem;
+}
+.u-margin-bt-medium {
+  margin-bottom: 4rem;
+}
+.u-margin-bt-large {
+  margin-bottom: 6rem;
+}
+.u-margin-bt-largest {
+  margin-bottom: 8rem;
+}

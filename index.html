@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Application</title>
+
+    <!-- Link to FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Link to Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to Stylesheet -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <!-- Search Box -->
+      <div class="header__search-box">
+        <i class="fa fa-search header__search-icon" aria-hidden="true"></i>
+
+        <input
+          type="text"
+          class="header__search-input"
+          placeholder="Search Movie"
+        />
+      </div>
+      <!-- User-->
+      <div class="header__user-box">
+        <p class="header__username">Mo.Rehan</p>
+        <img
+          src="vendors/img/WhatsApp Image 2020-03-03 at 10.59.30 PM.jpeg"
+          alt="User Image"
+          class="header__user-img"
+        />
+      </div>
+    </header>
+
+    <!-- Main Content -->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Logo Box -->
+      <div class="sidebar__logo-box">
+        <p class="sidebar__logo">MovieHub</p>
+      </div>
+      <nav class="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item navigation__item--active">
+            <a href="#" class="navigation__link">New Releases</a>
+          </li>
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Trending</a>
+          </li>
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Coming Soon</a>
+          </li>
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Favourites</a>
+          </li>
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Watch Later</a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="copyright">
+        copyright &copy; 2020 Mo.Rehan. All Right Reserved.
+      </p>
+    </div>
+
+    <!-- Main DashBoard -->
+    <div class="dashboard">
+      <h1 class="heading-1">Trending Movies</h1>
+
+      <div class="dashboard__movies">
+        <!-- First Movie -->
+        <div class="dashboard__movie">
+          <p class="dashboard__rating">7.9</p>
+          <div class="dashboard__img-box">
+            <img
+              src="vendors/img/WhatsApp Image 2020-03-03 at 10.59.30 PM.jpeg"
+              alt="First Movie Image"
+              class="dashboard__img"
+            />
+            <div class="dashboard__overlay">
+              <a href="#" class="dashboard__favourite">
+                <i class="fa fa-heart dashboard__icon" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="dashboard__watch-later">
+                <i class="fa fa-clock-o dashboard__icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="dashboard__information-box">
+            <h2 class="heading-2 u-margin-bt-very-small">The Walling</h2>
+            <p class="category">Mystery, Drama</p>
+          </div>
+        </div>
+
+        <!-- Second Movie -->
+        <div class="dashboard__movie">
+          <p class="dashboard__rating">8.1</p>
+          <div class="dashboard__img-box">
+            <img
+              src="vendors/img/WhatsApp Image 2020-03-03 at 10.59.30 PM.jpeg"
+              alt="First Movie Image"
+              class="dashboard__img"
+            />
+            <div class="dashboard__overlay">
+              <a href="#" class="dashboard__favourite">
+                <i class="fa fa-heart dashboard__icon" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="dashboard__watch-later">
+                <i class="fa fa-clock-o dashboard__icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="dashboard__information-box">
+            <h2 class="heading-2 u-margin-bt-very-small">The Walling</h2>
+            <p class="category">Mystery, Drama</p>
+          </div>
+        </div>
+
+        <!-- Third Movie-->
+        <div class="dashboard__movie">
+          <p class="dashboard__rating">6.8</p>
+          <div class="dashboard__img-box">
+            <img
+              src="vendors/img/WhatsApp Image 2020-03-03 at 10.59.30 PM.jpeg"
+              alt="First Movie Image"
+              class="dashboard__img"
+            />
+            <div class="dashboard__overlay">
+              <a href="#" class="dashboard__favourite">
+                <i class="fa fa-heart dashboard__icon" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="dashboard__watch-later">
+                <i class="fa fa-clock-o dashboard__icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="dashboard__information-box">
+            <h2 class="heading-2">The Walling</h2>
+            <p class="category">Mystery, Drama</p>
+          </div>
+        </div>
+
+        <!-- Fourth Movie -->
+        <div class="dashboard__movie">
+          <p class="dashboard__rating">7.5</p>
+          <div class="dashboard__img-box">
+            <img
+              src="vendors/img/WhatsApp Image 2020-03-03 at 10.59.30 PM.jpeg"
+              alt="First Movie Image"
+              class="dashboard__img"
+            />
+            <div class="dashboard__overlay">
+              <a href="#" class="dashboard__favourite">
+                <i class="fa fa-heart dashboard__icon" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="dashboard__watch-later">
+                <i class="fa fa-clock-o dashboard__icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="dashboard__information-box">
+            <h2 class="heading-2 u-margin-bt-very-small">
+              The Walling
+            </h2>
+            <p class="category">Mystery, Drama</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="resources/js/app.js"></script>
+  </body>
+</html>
+
+<!-- <i class="fa fa-spinner" aria-hidden="true"></i>
+<i class="fa fa-video-camera" aria-hidden="true"></i>
+<i class="fa fa-firefox" aria-hidden="true"></i>
+<i class="fa fa-heart" aria-hidden="true"></i>
+<i class="fa fa-clock-o" aria-hidden="true"></i> -->
