@@ -49,24 +49,37 @@
     <div class="sidebar">
       <!-- Logo Box -->
       <div class="sidebar__logo-box">
+        <i class="fa fa-bars sidebar__icon" aria-hidden="true"></i>
         <p class="sidebar__logo">MovieHub</p>
       </div>
       <nav class="navigation">
         <ul class="navigation__list">
-          <li class="navigation__item navigation__item--active">
-            <a href="#" class="navigation__link">New Releases</a>
+          <li class="navigation__item navigation__item--active newReleases">
+            <i
+              class="fa fa-video-camera navigation__icon"
+              aria-hidden="true"
+            ></i>
+            New Releases
           </li>
-          <li class="navigation__item">
-            <a href="" class="navigation__link">Trending</a>
+          <li class="navigation__item trending">
+            <i class="fa fa-firefox navigation__icon" aria-hidden="true"></i>
+
+            Trending
           </li>
-          <li class="navigation__item">
-            <a href="" class="navigation__link">Coming Soon</a>
+          <li class="navigation__item comingSoon">
+            <i class="fa fa-spinner navigation__icon" aria-hidden="true"></i>
+
+            Coming Soon
           </li>
-          <li class="navigation__item">
-            <a href="" class="navigation__link">Favourites</a>
+          <li class="navigation__item favourites">
+            <i class="fa fa-heart navigation__icon" aria-hidden="true"></i>
+
+            Favourites
           </li>
-          <li class="navigation__item">
-            <a href="" class="navigation__link">Watch Later</a>
+          <li class="navigation__item watchLater">
+            <i class="fa fa-clock-o navigation__icon" aria-hidden="true"></i>
+
+            Watch Later
           </li>
         </ul>
       </nav>
@@ -78,11 +91,11 @@
 
     <!-- Main DashBoard -->
     <div class="dashboard">
-      <h1 class="heading-1">Trending Movies</h1>
+      <h1 class="heading-1">Search For a Movie</h1>
 
-      <div class="dashboard__movies">
+      <div class="dashboard__movies dashboard__movies--visible">
         <!-- First Movie -->
-        <div class="dashboard__movie">
+        <!-- <div class="dashboard__movie">
           <p class="dashboard__rating">7.9</p>
           <div class="dashboard__img-box">
             <img
@@ -103,10 +116,10 @@
             <h2 class="heading-2 u-margin-bt-very-small">The Walling</h2>
             <p class="category">Mystery, Drama</p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Second Movie -->
-        <div class="dashboard__movie">
+        <!-- <div class="dashboard__movie">
           <p class="dashboard__rating">8.1</p>
           <div class="dashboard__img-box">
             <img
@@ -127,10 +140,10 @@
             <h2 class="heading-2 u-margin-bt-very-small">The Walling</h2>
             <p class="category">Mystery, Drama</p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Third Movie-->
-        <div class="dashboard__movie">
+        <!-- <div class="dashboard__movie">
           <p class="dashboard__rating">6.8</p>
           <div class="dashboard__img-box">
             <img
@@ -151,10 +164,10 @@
             <h2 class="heading-2">The Walling</h2>
             <p class="category">Mystery, Drama</p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Fourth Movie -->
-        <div class="dashboard__movie">
+        <!-- <div class="dashboard__movie">
           <p class="dashboard__rating">7.5</p>
           <div class="dashboard__img-box">
             <img
@@ -176,18 +189,19 @@
               The Walling
             </h2>
             <p class="category">Mystery, Drama</p>
-          </div>
+          </div> -->
         </div>
+        <div class="favourite__movies favourite__movies--hidden"></div>
       </div>
     </div>
 
     <!-- JavaScript Files -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+      integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="resources/js/utils.js"></script>
     <script src="resources/js/app.js"></script>
   </body>
 </html>
-
-<!-- <i class="fa fa-spinner" aria-hidden="true"></i>
-<i class="fa fa-video-camera" aria-hidden="true"></i>
-<i class="fa fa-firefox" aria-hidden="true"></i>
-<i class="fa fa-heart" aria-hidden="true"></i>
-<i class="fa fa-clock-o" aria-hidden="true"></i> -->
