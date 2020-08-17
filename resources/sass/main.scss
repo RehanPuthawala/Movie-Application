@@ -1,9 +1,21 @@
+// *------------------ Variables -----------------------------* //
+
 $color-primary: #e43f5a;
 $color-bg: #1b1b2f;
 $color-light-blue: #1f4068;
 $color-dark-blue: #162447;
+$color-yellow: #f8ab37;
 
 $font-primary: "Poppins", sans-serif;
+
+$img-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+// *------------------ Mixin -----------------------------* //
+@mixin dashboardStyle {
+  min-height: 100vh;
+  padding: 4rem;
+  grid-column: col-2-start / page-end;
+  background-color: $color-dark-blue;
+}
 
 *,
 *::before,
@@ -145,21 +157,17 @@ body {
 
 .dashboard,
 .favourite,
-.watch-later,
-.eachMovie {
-  min-height: 100vh;
-  padding: 4rem;
-  grid-column: col-2-start / page-end;
-  background-color: $color-dark-blue;
+.watch-later {
+  @include dashboardStyle();
 
   &__movies {
     margin: 4rem 0;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    grid-gap: 2rem;
   }
 
   .visible {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 2rem;
   }
 
   .hidden {
@@ -175,8 +183,8 @@ body {
   &__img-box {
     width: 100%;
     height: 40rem;
+    box-shadow: $img-box-shadow;
     overflow: hidden;
-    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
     position: relative;
   }
@@ -232,6 +240,7 @@ body {
 
   &__more-details {
     cursor: pointer;
+    border-radius: 1rem;
     &--link {
       display: inline-block;
       padding: 1rem;
@@ -292,6 +301,65 @@ body {
 
 // *------------------ Each Movie DashBoard -----------------------------* //
 
+.eachMovie {
+  @include dashboardStyle();
+
+  &__movie {
+    display: grid;
+    grid-template-columns: 35rem repeat(auto-fit, minmax(25rem, 1fr));
+    grid-column-gap: 4rem;
+  }
+
+  &__img-box {
+    box-shadow: $img-box-shadow;
+    overflow: hidden;
+    width: 100%;
+    height: 80%;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content-box {
+    width: 80%;
+    margin: 5rem 0;
+  }
+
+  &__minor-details-box {
+    width: 100%;
+    color: #999;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  &__time {
+    padding-right: 0.5rem;
+    border-right: 1px solid #999;
+  }
+
+  &__category {
+  }
+
+  &__rating-box {
+  }
+
+  &__rating {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: $color-yellow;
+  }
+
+  &__description-box {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    color: #fff;
+    width: 80%;
+  }
+}
 // *------------------ Components -----------------------------* //
 
 .navigation {
@@ -350,6 +418,15 @@ body {
 }
 
 .heading-2 {
+  font-size: 6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.45);
+}
+
+.heading-3 {
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: 1px;

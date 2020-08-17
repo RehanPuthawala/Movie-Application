@@ -1,33 +1,18 @@
 const searchInput = document.querySelector(".header__search-input");
+
 const dashboardMovies = document.querySelector(".dashboard__movies");
 const favouriteMovies = document.querySelector(".favourite__movies");
 const watchLaterMovies = document.querySelector(".watch-later__movies");
+const eachMovies = document.querySelector(".eachMovie");
+
 const mainHeading = document.querySelector(".heading-1");
 
 let headingContent;
-// * ---------------------All Tab Add Event Listener ---------------- //
-
-const allTab = document.querySelectorAll(".navigation__item");
-
-const homeTab = document.querySelector(".home");
-const trendingTab = document.querySelector(".trending");
-const comingSoonTab = document.querySelector(".comingSoon");
-const favouriteTab = document.querySelector(".favourites");
-const watchLaterTab = document.querySelector(".watchLater");
-
-allTab.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    allTab.forEach((tab) => {
-      tab.classList.remove("navigation__item--active");
-    });
-    tab.classList.add("navigation__item--active");
-  });
-});
 
 // * --------------------- Fetch Data Function ---------------- //
 
 const fetchSearchedMovies = async (searchTerm) => {
-  const response = await axios.get("http://www.omdbapi.com", {
+  const response = await axios.get("https://www.omdbapi.com", {
     params: {
       apikey: "5cb133d8",
       s: searchTerm,
@@ -63,7 +48,7 @@ const showMovie = async () => {
       movie.Type
     );
     dashboardMovies.append(dashboardMovie);
-    movieLayout(dashboardMovies);
+    // movieLayout(dashboardMovies);
 
     // Dashboard Movie => Favourite Button Add Event Listener
     favouriteMovies.innerHTML = "";
@@ -110,25 +95,38 @@ const showMovie = async () => {
         movieLayout(watchLaterMovies);
       }
     });
+
+    // Dashboard Movie => View More Details Event Listener
+    // eachMovies.innerHTML = "";
+    dashboardMovie.addEventListener("click", async (event) => {
+      if (
+        event.target.classList.contains("dashboard__more-details") ||
+        event.target.classList.contains("dashboard__more-details--link")
+      ) {
+        const movieDetails = await fetchEachMovie(movie.imdbID);
+
+        console.log(movieDetails);
+        const movieImgSrc =
+          movieDetails.Poster === "N/A" ? "" : movieDetails.Poster;
+
+        const eachMovie = document.querySelector(".eachMovie__movie");
+
+        eachMovie.innerHTML = addContentForEachMovie(
+          "eachMovie",
+          movieImgSrc,
+          movieDetails.Title,
+          movieDetails.Type,
+          movieDetails.Plot,
+          movieDetails.imdbRating,
+          movieDetails.Runtime
+        );
+
+        eachMovies.append(eachMovie);
+        dashboardSwitch(eachMovies, movieDetails.Title);
+      }
+    });
   }
 };
-
-// * --------------------- Favourite Tab  Event Listener ---------------- //
-
-watchLaterTab.addEventListener("click", () => {
-  tabSwitch(watchLaterMovies, "Watch Later");
-});
-
-// * --------------------- watchLater Tab  Event Listener ---------------- //
-
-favouriteTab.addEventListener("click", () => {
-  tabSwitch(favouriteMovies, "Your Favourite Movies");
-});
-
-// * --------------------- Home Tab  Event Listener ---------------- //
-homeTab.addEventListener("click", () => {
-  tabSwitch(dashboardMovies);
-});
 
 // * --------------------- Search Inut Event Listener ---------------- //
 

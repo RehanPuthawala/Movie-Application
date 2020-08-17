@@ -45,7 +45,7 @@ const addContent = (mainContainer, year, imgsrc, title, type) => {
         </div>
       </div>
       <div class="${mainContainer}__information-box">
-      <h2 class="heading-2">${title}</h2>
+      <h2 class="heading-3">${title}</h2>
       <p class="category">${type}</p>
     </div> 
   `;
@@ -53,10 +53,37 @@ const addContent = (mainContainer, year, imgsrc, title, type) => {
 
 // * --------------------- Add Content For Each MovieFunction ---------------- //
 
-// const addContentForEachMovie = (mainContainer, rating, imgsrc, title, type) => {
-//   return
-//   `;
-// };
+const addContentForEachMovie = (
+  mainContainer,
+  imgsrc,
+  title,
+  type,
+  description,
+  rating,
+  length
+) => {
+  return `
+  
+    <div class="${mainContainer}__img-box">
+      <img src="${imgsrc}" alt="Movie Image" class="${mainContainer}__img">
+    </div>
+    <div class="${mainContainer}__content-box">
+      <h2 class="heading-2 u-margin-bt-very-small">${title}</h2>
+      <div class="${mainContainer}__minor-details-box u-margin-bt-small">
+        <span class="${mainContainer}__time">${length}</span>
+        <span class="${mainContainer}__category">${type}</span>
+      </div>
+      <div class="${mainContainer}__rating-box">
+        <p class="${mainContainer}__rating">${rating} / 10</p>
+      </div>
+      <div class="${mainContainer}__description-box">
+        <p class="${mainContainer}__description">
+          ${description}
+        </p>
+      </div>
+    </div>
+  `;
+};
 
 // * --------------------- Debounce Helper Function ---------------- //
 
@@ -72,9 +99,9 @@ const debounceHelper = (func, delay) => {
   };
 };
 
-// * --------------------- Tab Switch Function ---------------- //
+// * --------------------- Dashboard Switch Function ---------------- //
 
-const tabSwitch = (currDashboard, textContent) => {
+const dashboardSwitch = (currDashboard, textContent) => {
   let allDashboard = document.querySelectorAll(".dashboard > .visible");
   allDashboard.forEach((dashboard) => {
     dashboard.classList.remove("visible");
@@ -94,4 +121,17 @@ const movieLayout = (currDashboard) => {
     currDashboard.style.gridTemplateColumns =
       " repeat(auto-fit, minmax(25rem, 1fr))";
   }
+};
+
+// * --------------------- Fetch Each Movie ---------------- //
+
+const fetchEachMovie = async (movieID) => {
+  const response = await axios.get("https://www.omdbapi.com", {
+    params: {
+      apikey: "5cb133d8",
+      i: movieID,
+    },
+  });
+
+  return response.Response === "true" ? [] : response.data;
 };
