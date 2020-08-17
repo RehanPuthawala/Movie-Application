@@ -1,23 +1,24 @@
 const searchInput = document.querySelector(".header__search-input");
 const dashboardMovies = document.querySelector(".dashboard__movies");
 const favouriteMovies = document.querySelector(".favourite__movies");
+const watchLaterMovies = document.querySelector(".watch-later__movies");
 const mainHeading = document.querySelector(".heading-1");
 
+let headingContent;
 // * ---------------------All Tab Add Event Listener ---------------- //
 
 const allTab = document.querySelectorAll(".navigation__item");
 
-const newReleasesTab = document.querySelector(".newReleases");
+const homeTab = document.querySelector(".home");
 const trendingTab = document.querySelector(".trending");
-const comingSoon = document.querySelector(".comingSoon");
+const comingSoonTab = document.querySelector(".comingSoon");
 const favouriteTab = document.querySelector(".favourites");
-const watchLater = document.querySelector(".watchLater");
+const watchLaterTab = document.querySelector(".watchLater");
 
 allTab.forEach((tab) => {
   tab.addEventListener("click", () => {
     allTab.forEach((tab) => {
       tab.classList.remove("navigation__item--active");
-      console.log(tab.classList[1]);
     });
     tab.classList.add("navigation__item--active");
   });
@@ -62,6 +63,7 @@ const showMovie = async () => {
       movie.Type
     );
     dashboardMovies.append(dashboardMovie);
+    movieLayout(dashboardMovies);
 
     // Dashboard Movie => Favourite Button Add Event Listener
     favouriteMovies.innerHTML = "";
@@ -70,7 +72,6 @@ const showMovie = async () => {
         event.target.classList.contains("dashboard__favourite") ||
         event.target.classList.contains("dashboard__icon--favourite")
       ) {
-        console.log(favouriteMovies.children[favouriteMovies.children.length]);
         const favouriteMovie = document.createElement("div");
         addElementToDOM(favouriteMovie, "favourite__movie");
 
@@ -83,6 +84,30 @@ const showMovie = async () => {
         );
 
         favouriteMovies.append(favouriteMovie);
+        movieLayout(favouriteMovies);
+      }
+    });
+
+    // Dashboard Movie => Watch later Add Event Listener
+    watchLaterMovies.innerHTML = "";
+    dashboardMovie.addEventListener("click", (event) => {
+      if (
+        event.target.classList.contains("dashboard__watch-later") ||
+        event.target.classList.contains("dashboard__icon--watch-later")
+      ) {
+        const watchLaterMovie = document.createElement("div");
+        addElementToDOM(watchLaterMovie, "watch-later__movie");
+
+        watchLaterMovie.innerHTML += addContent(
+          "watch-later",
+          movie.Year,
+          imgSrc,
+          movie.Title,
+          movie.Type
+        );
+
+        watchLaterMovies.append(watchLaterMovie);
+        movieLayout(watchLaterMovies);
       }
     });
   }
@@ -90,20 +115,19 @@ const showMovie = async () => {
 
 // * --------------------- Favourite Tab  Event Listener ---------------- //
 
-favouriteTab.addEventListener("click", () => {
-  dashboardMovies.classList.add("dashboard__movies--hidden");
-  favouriteMovies.classList.remove("favourite__movies--hidden");
-  favouriteMovies.classList.add("favourite__movies--visible");
-  mainHeading.textContent = "Your Favourite Movies";
+watchLaterTab.addEventListener("click", () => {
+  tabSwitch(watchLaterMovies, "Watch Later");
 });
 
-// * --------------------- New Releases  Event Listener ---------------- //
-newReleasesTab.addEventListener("click", () => {
-  dashboardMovies.classList.add("dashboard__movies--visible");
-  dashboardMovies.classList.remove("dashboard__movies--hidden");
-  favouriteMovies.classList.remove("favourite__movies--visible");
-  favouriteMovies.classList.add("favourite__movies--hidden");
-  mainHeading.textContent = "New Releases";
+// * --------------------- watchLater Tab  Event Listener ---------------- //
+
+favouriteTab.addEventListener("click", () => {
+  tabSwitch(favouriteMovies, "Your Favourite Movies");
+});
+
+// * --------------------- Home Tab  Event Listener ---------------- //
+homeTab.addEventListener("click", () => {
+  tabSwitch(dashboardMovies);
 });
 
 // * --------------------- Search Inut Event Listener ---------------- //

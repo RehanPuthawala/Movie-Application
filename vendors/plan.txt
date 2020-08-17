@@ -1,6 +1,6 @@
-[] take the user typed value
-[] search for the that particular movie through omdb api and with search parameter
-[] show all the search listed movies on movie dashboard with poster, name and category
+[X] take the user typed value
+[X] search for the that particular movie through omdb api and with search parameter
+[X] show all the search listed movies on movie dashboard with poster, name and category
 [] when user clicks on particular movie than grab that movie title and search for that movie
 [] hide the default movie dashboard
 [] show the particular movie details 
@@ -12,5 +12,5 @@
   [] reviews and much more
 [] when user clicks back movie button return him on searched page
 [] when user clicks again back button or click trending menu than show default movie dashboard
-[] show little heart on each movie
-[] if user clicks on that than grab that movie details and add that movie to favourite tab
+[X] show little heart on each movie
+[X] if user clicks on that than grab that movie details and add that movie to favourite tab
