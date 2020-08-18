@@ -31,5 +31,8 @@ favouriteTab.addEventListener("click", () => {
 
 // * --------------------- Home Tab  Event Listener ---------------- //
 homeTab.addEventListener("click", () => {
-  dashboardSwitch(dashboardMovies);
+  dashboardSwitch(
+    dashboardMovies,
+    `Results For <span class="searchName">${searchInput.value}</span>`
+  );
 });

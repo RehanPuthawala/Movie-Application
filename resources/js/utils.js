@@ -116,7 +116,7 @@ const dashboardSwitch = (currDashboard, textContent) => {
 
 const movieLayout = (currDashboard) => {
   if (currDashboard.children.length <= 2) {
-    currDashboard.style.gridTemplateColumns = "34rem";
+    currDashboard.style.gridTemplateColumns = "34rem 34rem";
   } else {
     currDashboard.style.gridTemplateColumns =
       " repeat(auto-fit, minmax(25rem, 1fr))";
@@ -128,6 +128,9 @@ const movieLayout = (currDashboard) => {
 const fetchEachMovie = async (movieID) => {
   const response = await axios.get(
     "https://cors-anywhere.herokuapp.com/http://www.omdbapi.com",
+
+    // Src: https://stackoverflow.com/questions/47939548/github-pages-website-is-on-https-but-rest-api-is-on-http => "https://cors-anywhere.herokuapp.com/"
+
     {
       params: {
         apikey: "5cb133d8",

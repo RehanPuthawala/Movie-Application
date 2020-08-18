@@ -7,6 +7,8 @@ const eachMovies = document.querySelector(".eachMovie");
 
 const mainHeading = document.querySelector(".heading-1");
 
+let favouriteMoviesCount = 0;
+let watchLaterMoviesCount = 0;
 let headingContent;
 
 // * --------------------- Fetch Data Function ---------------- //
@@ -14,6 +16,8 @@ let headingContent;
 const fetchSearchedMovies = async (searchTerm) => {
   const response = await axios.get(
     "https://cors-anywhere.herokuapp.com/http://www.omdbapi.com",
+
+    // Src: https://stackoverflow.com/questions/47939548/github-pages-website-is-on-https-but-rest-api-is-on-http => "https://cors-anywhere.herokuapp.com/"
     {
       params: {
         apikey: "5cb133d8",
