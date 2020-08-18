@@ -12,12 +12,15 @@ let headingContent;
 // * --------------------- Fetch Data Function ---------------- //
 
 const fetchSearchedMovies = async (searchTerm) => {
-  const response = await axios.get("https://www.omdbapi.com", {
-    params: {
-      apikey: "5cb133d8",
-      s: searchTerm,
-    },
-  });
+  const response = await axios.get(
+    "https://cors-anywhere.herokuapp.com/http://www.omdbapi.com",
+    {
+      params: {
+        apikey: "5cb133d8",
+        s: searchTerm,
+      },
+    }
+  );
 
   return response.Response === "False" ? [] : response.data.Search;
 };
@@ -48,7 +51,10 @@ const showMovie = async () => {
       movie.Type
     );
     dashboardMovies.append(dashboardMovie);
-    // movieLayout(dashboardMovies);
+    dashboardSwitch(
+      dashboardMovies,
+      `Results For <span class="searchName">${searchInput.value}</span>`
+    );
 
     // Dashboard Movie => Favourite Button Add Event Listener
     favouriteMovies.innerHTML = "";

@@ -109,14 +109,14 @@ const dashboardSwitch = (currDashboard, textContent) => {
   });
   currDashboard.classList.remove("hidden");
   currDashboard.classList.add("visible");
-  mainHeading.textContent = `${textContent}`;
+  mainHeading.innerHTML = `${textContent}`;
 };
 
 // * --------------------- Layout function ---------------- //
 
 const movieLayout = (currDashboard) => {
   if (currDashboard.children.length <= 2) {
-    currDashboard.style.gridTemplateColumns = "25rem 25rem";
+    currDashboard.style.gridTemplateColumns = "34rem";
   } else {
     currDashboard.style.gridTemplateColumns =
       " repeat(auto-fit, minmax(25rem, 1fr))";
@@ -126,12 +126,15 @@ const movieLayout = (currDashboard) => {
 // * --------------------- Fetch Each Movie ---------------- //
 
 const fetchEachMovie = async (movieID) => {
-  const response = await axios.get("https://www.omdbapi.com", {
-    params: {
-      apikey: "5cb133d8",
-      i: movieID,
-    },
-  });
+  const response = await axios.get(
+    "https://cors-anywhere.herokuapp.com/http://www.omdbapi.com",
+    {
+      params: {
+        apikey: "5cb133d8",
+        i: movieID,
+      },
+    }
+  );
 
   return response.Response === "true" ? [] : response.data;
 };
